@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAKI BIKE 212 - Premium Motorcycles Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #00305B;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.15);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #00305B;
+            color: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #00305B 0%, #004d8c 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #00305B;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: #1a1a1a;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        /* Filters */
+        .filters {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filters-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.8rem;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .filter-btn.active {
+            background: #00305B;
+            color: white;
+            border-color: #00305B;
+        }
+
+        .filter-btn:hover {
+            border-color: #00305B;
+            color: #00305B;
+        }
+
+        /* Products Grid */
+        .products-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #00305B;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .product-category {
+            color: #00305B;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-specs {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #00305B;
+        }
+
+        .add-to-cart-btn {
+            background: #00305B;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #004d8c;
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            max-width: 650px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #1a1a1a;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem;
+            border-bottom: 1px solid #eee;
+            background: #fafafa;
+            margin-bottom: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        .cart-item-price {
+            color: #00305B;
+            font-weight: 600;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            background: #00305B;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+
+        .quantity-btn:hover {
+            background: #004d8c;
+        }
+
+        .remove-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 3px solid #00305B;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            font-size: 1.1rem;
+        }
+
+        .summary-row.total {
+            font-weight: 900;
+            color: #00305B;
+            font-size: 1.4rem;
+            margin-top: 1.2rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 1.8rem;
+            padding: 1.2rem;
+            background: #00305B;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .checkout-btn:hover:not(:disabled) {
+            background: #004d8c;
+            transform: translateY(-2px);
+        }
+
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Showroom Modal */
+        .showroom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .showroom-modal.active {
+            display: flex;
+        }
+
+        .showroom-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 90%;
+            margin: 2rem auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .showroom-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 3px solid #00305B;
+        }
+
+        .showroom-header h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+        }
+
+        .showroom-close {
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .showroom-close:hover {
+            color: #1a1a1a;
+        }
+
+        .showroom-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 3rem;
+        }
+
+        .showroom-image-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .showroom-main-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .showroom-info-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .showroom-category {
+            color: #00305B;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .showroom-name {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin: 0.5rem 0;
+        }
+
+        .showroom-rating {
+            color: #ffc107;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+
+        .showroom-specs {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .spec-item-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        .spec-item-detail:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .spec-value {
+            color: #00305B;
+            font-weight: bold;
+        }
+
+        .showroom-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00305B;
+            margin: 1.5rem 0;
+        }
+
+        .showroom-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-add-large {
+            flex: 1;
+            padding: 1rem;
+            background: #00305B;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-add-large:hover {
+            background: #004d8c;
+        }
+
+        .btn-info {
+            flex: 1;
+            padding: 1rem;
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #00305B;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-info:hover {
+            background: #00305B;
+            color: white;
+        }
+
+        /* Responsive Showroom */
+        @media (max-width: 768px) {
+            .showroom-body {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+
+            .showroom-name {
+                font-size: 1.8rem;
+            }
+
+            .showroom-price {
+                font-size: 2rem;
+            }
+
+            .showroom-main-image {
+                height: 300px;
+            }
+        }
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filters {
+                justify-content: center;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .product-card {
+                border-radius: 8px;
+            }
+
+            .product-image {
+                height: 180px;
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🏍️ ZAKI BIKE 212</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#products">Bikes</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to MotoHub</h1>
+        <p>Discover the most powerful motorcycles in the world</p>
+        <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Now</button>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters">
+        <span class="filters-label">Filter by Type:</span>
+        <button class="filter-btn active" onclick="filterProducts('all')">All Models</button>
+        <button class="filter-btn" onclick="filterProducts('sportbike')">Sportbikes</button>
+        <button class="filter-btn" onclick="filterProducts('cruiser')">Cruisers</button>
+        <button class="filter-btn" onclick="filterProducts('adventure')">Adventure</button>
+        <button class="filter-btn" onclick="filterProducts('naked')">Naked Bikes</button>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-grid" id="products-grid"></div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Your Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span id="shipping">$500.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (12%):</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="checkout()" id="checkout-btn">Complete Purchase</button>
+        </div>
+    </div>
+
+    <!-- Showroom Modal -->
+    <div class="showroom-modal" id="showroom-modal">
+        <div class="showroom-content">
+            <div class="showroom-header">
+                <h2 id="showroom-name">Motorcycle Name</h2>
+                <button class="showroom-close" onclick="closeShowroom()">&times;</button>
+            </div>
+            <div class="showroom-body">
+                <div class="showroom-image-section">
+                    <img id="showroom-image" src="" alt="Motorcycle" class="showroom-main-image">
+                </div>
+                <div class="showroom-info-section">
+                    <div class="showroom-category" id="showroom-category">Category</div>
+                    <h1 class="showroom-name" id="showroom-title">Bike Name</h1>
+                    <div class="showroom-rating">⭐⭐⭐⭐⭐ (145 Reviews)</div>
+                    
+                    <div class="showroom-specs">
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Engine:</span>
+                            <span class="spec-value" id="showroom-engine">--</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Power Output:</span>
+                            <span class="spec-value" id="showroom-power">--</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Type:</span>
+                            <span class="spec-value" id="showroom-type">Premium</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Warranty:</span>
+                            <span class="spec-value">2 Years</span>
+                        </div>
+                    </div>
+
+                    <div class="showroom-price" id="showroom-price">$0</div>
+
+                    <div class="showroom-buttons">
+                        <button class="btn-add-large" onclick="addToCartFromShowroom()">Add to Cart</button>
+                        <button class="btn-info" onclick="alert('Contact our sales team for test ride booking!')">Test Ride</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2026 ZAKI BIKE 212 - Premium Motorcycles. All rights reserved.</p>
+        <p>📧 sales@zakibike212.com | 📱 1-800-ZAKI-212 | 🏪 Open 9AM - 6PM Daily</p>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            { id: 1, name: 'Kawasaki Ninja H2', category: 'sportbike', price: 29999, engine: '998cc', power: '310hp', image: 'https://images.unsplash.com/photo-1606664515524-2ddc6c93f51b?w=500&h=400&fit=crop', special: 'Best Seller' },
+            { id: 2, name: 'Harley-Davidson Iron 883', category: 'cruiser', price: 12499, engine: '883cc', power: '53hp', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=400&fit=crop' },
+            { id: 3, name: 'BMW R 1250 GS', category: 'adventure', price: 24800, engine: '1254cc', power: '136hp', image: 'https://images.unsplash.com/photo-1602524206684-88c0199ca2b5?w=500&h=400&fit=crop', special: 'New' },
+            { id: 4, name: 'Yamaha MT-09', category: 'naked', price: 9250, engine: '889cc', power: '114hp', image: 'https://images.unsplash.com/photo-1599810694580-8f78b3f383d8?w=500&h=400&fit=crop' },
+            { id: 5, name: 'Ducati Panigale V4', category: 'sportbike', price: 23995, engine: '1103cc', power: '214hp', image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500&h=400&fit=crop', special: 'Hot' },
+            { id: 6, name: 'Honda Rebel 1100', category: 'cruiser', price: 8400, engine: '1084cc', power: '87hp', image: 'https://images.unsplash.com/photo-1606592573574-5c4ee8ce3db1?w=500&h=400&fit=crop' },
+            { id: 7, name: 'KTM 1290 Super Adventure R', category: 'adventure', price: 19599, engine: '1301cc', power: '160hp', image: 'https://images.unsplash.com/photo-1551830820-330a71b99659?w=500&h=400&fit=crop' },
+            { id: 8, name: 'Suzuki GSX-R1000', category: 'sportbike', price: 17999, engine: '999cc', power: '203hp', image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500&h=400&fit=crop' },
+        ];
+
+        let cart = [];
+        let currentFilter = 'all';
+
+        // Initialize Products
+        function initProducts() {
+            renderProducts();
+        }
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filteredProducts = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                const badgeHTML = product.special ? `<div class="product-badge">${product.special}</div>` : '';
+                card.style.cursor = 'pointer';
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/500x400?text=${product.name}'">
+                        ${badgeHTML}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-category">${product.category.toUpperCase()}</div>
+                        <div class="product-specs">
+                            <div class="spec-item">⚙️ ${product.engine}</div>
+                            <div class="spec-item">⚡ ${product.power}</div>
+                        </div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ (${Math.floor(Math.random() * 150) + 50} reviews)</div>
+                        <div class="product-price">
+                            <span class="price">$${product.price.toLocaleString()}</span>
+                            <button class="add-to-cart-btn" onclick="addToCart(${product.id}); event.stopPropagation();">Add</button>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => openShowroom(product.id));
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts();
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+
+            updateCartUI();
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            document.getElementById('cart-count').textContent = cart.length;
+            renderCart();
+        }
+
+        // Render Cart
+        function renderCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<div class="empty-cart">Your cart is empty. Start shopping!</div>';
+                document.getElementById('checkout-btn').disabled = true;
+                updateCartTotals();
+                return;
+            }
+
+            document.getElementById('checkout-btn').disabled = false;
+            cartItemsDiv.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">🏍️ ${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <button class="quantity-btn" onclick="removeFromCart(${item.id})">−</button>
+                        <span style="min-width: 40px; text-align: center; font-weight: bold;">1</span>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateCartTotals();
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Update Cart Totals
+        function updateCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = cart.length > 0 ? 500 : 0;
+            const tax = (subtotal + shipping) * 0.12;
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toLocaleString()}`;
+            document.getElementById('shipping').textContent = `$${shipping.toLocaleString()}`;
+            document.getElementById('tax').textContent = `$${tax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('total').textContent = `$${total.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        }
+
+        // Toggle Cart
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('active');
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) return;
+            const total = cart.reduce((sum, item) => sum + item.price, 0) + 500 + (cart.reduce((sum, item) => sum + item.price, 0) + 500) * 0.12;
+            alert(`🎉 Success! Your order of $${total.toLocaleString('en-US', {minimumFractionDigits: 2})} has been placed.\n\nThank you for choosing ZAKI BIKE 212!\n\nYour bikes will be delivered within 7-10 business days.`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('cart-modal');
+            if (e.target === modal) {
+                toggleCart();
+            }
+        });
+
+        let currentShowroomProduct = null;
+
+        // Open Showroom
+        function openShowroom(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentShowroomProduct = product;
+
+            document.getElementById('showroom-name').textContent = product.name;
+            document.getElementById('showroom-title').textContent = product.name;
+            document.getElementById('showroom-category').textContent = product.category.toUpperCase();
+            document.getElementById('showroom-image').src = product.image;
+            document.getElementById('showroom-engine').textContent = product.engine;
+            document.getElementById('showroom-power').textContent = product.power;
+            document.getElementById('showroom-type').textContent = product.category;
+            document.getElementById('showroom-price').textContent = `$${product.price.toLocaleString()}`;
+
+            document.getElementById('showroom-modal').classList.add('active');
+        }
+
+        // Close Showroom
+        function closeShowroom() {
+            document.getElementById('showroom-modal').classList.remove('active');
+            currentShowroomProduct = null;
+        }
+
+        // Add to Cart from Showroom
+        function addToCartFromShowroom() {
+            if (!currentShowroomProduct) return;
+            addToCart(currentShowroomProduct.id);
+            closeShowroom();
+            alert(`✅ ${currentShowroomProduct.name} added to cart!`);
+        }
+
+        // Close showroom when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('showroom-modal');
+            if (e.target === modal) {
+                closeShowroom();
+            }
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', initProducts);
+    </script>
+</body>
+</html>

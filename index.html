@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAKARIA Luxery Bikes - Premium Motorcycles Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🏍️ ZAKARIA Luxery Bikes</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#products">Bikes</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to ZAKARIA Luxery Bikes</h1>
+        <p>Discover the most powerful motorcycles in the world</p>
+        <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Now</button>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters">
+        <span class="filters-label">Filter by Type:</span>
+        <button class="filter-btn active" onclick="filterProducts('all')">All Models</button>
+        <button class="filter-btn" onclick="filterProducts('sportbike')">Sportbikes</button>
+        <button class="filter-btn" onclick="filterProducts('cruiser')">Cruisers</button>
+        <button class="filter-btn" onclick="filterProducts('adventure')">Adventure</button>
+        <button class="filter-btn" onclick="filterProducts('naked')">Naked Bikes</button>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="products-grid" id="products-grid"></div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Your Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span id="shipping">$500.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (12%):</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="checkout()" id="checkout-btn">Complete Purchase</button>
+        </div>
+    </div>
+
+    <!-- Showroom Modal -->
+    <div class="showroom-modal" id="showroom-modal">
+        <div class="showroom-content">
+            <div class="showroom-header">
+                <h2 id="showroom-name">Motorcycle Name</h2>
+                <button class="showroom-close" onclick="closeShowroom()">&times;</button>
+            </div>
+            <div class="showroom-body">
+                <div class="showroom-image-section">
+                    <img id="showroom-image" src="" alt="Motorcycle" class="showroom-main-image">
+                </div>
+                <div class="showroom-info-section">
+                    <div class="showroom-category" id="showroom-category">Category</div>
+                    <h1 class="showroom-name" id="showroom-title">Bikes Name</h1>
+                    <div class="showroom-rating">⭐⭐⭐⭐⭐ (145 Reviews)</div>
+                    
+                    <div class="showroom-specs">
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Engine:</span>
+                            <span class="spec-value" id="showroom-engine">--</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Power Output:</span>
+                            <span class="spec-value" id="showroom-power">--</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Type:</span>
+                            <span class="spec-value" id="showroom-type">Premium</span>
+                        </div>
+                        <div class="spec-item-detail">
+                            <span class="spec-label">Warranty:</span>
+                            <span class="spec-value">2 Years</span>
+                        </div>
+                    </div>
+
+                    <div class="showroom-price" id="showroom-price">$0</div>
+
+                    <div class="showroom-buttons">
+                        <button class="btn-add-large" onclick="addToCartFromShowroom()">Add to Cart</button>
+                        <button class="btn-info" onclick="alert('Contact our sales team for test ride booking!')">Test Ride</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2026 ZAKARIA Luxery Bikes - Premium Motorcycles. All rights reserved.</p>
+        <p>📧 sales@zakibike212.com | 📱 1-800-ZAKI-212 | 🏪 Open 9AM - 6PM Daily</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
